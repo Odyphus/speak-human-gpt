@@ -4,9 +4,13 @@
 
 Is GPT harder to understand after the GPT-6.2 update? Paste this one prompt into Codex to get clearer, more natural replies.
 
+For ChatGPT, paste the shorter version into **Settings → Personalization → Custom Instructions**. [ChatGPT custom instructions](chatgpt-custom-instructions.en.txt)
+
+[Before-and-after examples](examples.en.md) · [English share image](assets/social-preview.en.png)
+
 ## Full prompt
 
-Use the copy button in the top-right corner of the code block to copy the whole prompt.
+Use the copy button in the top-right corner of the code block and paste the full prompt into a new Codex conversation. [Read the formatted prompt](prompt.en.md)
 
 ```markdown
 # Task — Improve the readability of AI replies by updating Codex's global writing instructions
@@ -125,21 +129,21 @@ Adapt the structure to the question.
 
 ### 6. Reduce formulaic AI writing
 
-Avoid repeatedly relying on stock transitions and summaries. Common Chinese examples include the following.
+Avoid relying on stock transitions and summaries. Common English examples include the following.
 
-- 值得注意的是
-- 本质上
-- 简单来说
-- 归根结底
-- 最核心的逻辑是
-- 这并不是……而是……
-- 我们不妨……
-- 不言而喻的是……
+- It's worth noting
+- At its core
+- In short
+- Ultimately
+- The key takeaway is
+- The simplest mental model is
+- Let's take a closer look
+- It goes without saying
 
 Use these phrases when they add meaning. Also avoid these habits.
 
 - Making up concepts or labels just to make an answer look structured.
-- Substituting English terms for familiar Chinese expressions without a reason.
+- Using loanwords or jargon when there is a familiar expression in the user's language.
 - Repeating information the user already knows.
 - Ending with a routine recap of points already made.
 - Adding long strings of empty pleasantries.
@@ -205,7 +209,7 @@ If the examples still fall short, refine the guidelines and try again.
 
 ## 7. Additional deliverable — General ChatGPT instructions
 
-Alongside the Codex configuration changes, provide a separate set of general-purpose Custom Instructions in Chinese for ChatGPT on the web and desktop.
+Alongside the Codex configuration changes, provide a separate set of general-purpose Custom Instructions in English for ChatGPT on the web and desktop.
 
 - Use the same writing principles as the Codex instructions.
 - Make the instructions independent of any particular user's background.

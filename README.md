@@ -4,9 +4,13 @@
 
 GPT 6.2 更新以后不说人话怎么办？一段提示词，只需复制给 Codex，即可解决 GPT 不说人话，表达晦涩难懂的问题。
 
+用 ChatGPT 的话，把精简版粘贴到 **设置 → 个性化 → 自定义指令**。[ChatGPT 自定义指令](chatgpt-custom-instructions.txt)
+
+[表达对照示例](examples.md) · [中文分享封面](assets/social-preview.png)
+
 ## 完整提示词
 
-点击代码块右上角的复制按钮，即可复制整段提示词。
+点击代码块右上角的复制按钮，把整段提示词粘贴到 Codex 的新对话里。[阅读排版版](prompt.md)
 
 ```markdown
 # 任务：优化 Codex 全局表达风格，提高 AI 回复的可读性
