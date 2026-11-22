@@ -9,129 +9,123 @@ Is GPT harder to understand after the GPT-6.2 update? Paste this one prompt into
 Use the copy button in the top-right corner of the code block to copy the whole prompt.
 
 ```markdown
-# Task — Improve how GPT-6 models write and make long conversations easier to read
+# Task — Improve the readability of AI replies by updating Codex's global writing instructions
 
-I've noticed several problems with how GPT-6 models have been writing recently.
+## 1. Background
 
-1. The language is often hard to follow. The model uses abstract words and complicated phrasing where everyday language would work.
-2. Sentences don't flow naturally, and the logical connections between them are often unclear.
-3. The model often compresses explanations so much that it leaves out essential context, reasoning, and cause and effect.
-4. It piles up jargon, abbreviations, and abstract concepts, so readers have to go back and reread.
-5. Even with plenty of headings, lists, and Markdown formatting, the answer can still be hard to read.
-6. It falls into familiar AI writing habits, including formulaic transitions, repeated summaries, made-up concepts, and stock phrases.
+Users have recently reported several problems with how GPT-6 models write.
 
-Use OpenAI's official guidance for GPT-6 and GPT-6.2 to improve the writing style Codex uses globally.
+1. The language can be hard to follow, with abstract words and complicated phrasing where everyday language would work.
+2. The sentences can feel disconnected, so it's hard to see how one thought leads to the next.
+3. In trying to be brief, the model can cut out context, reasoning, and cause and effect that the reader needs.
+4. The model often piles up jargon, abbreviations, and abstract concepts, so readers have to work harder to understand the answer.
+5. Lots of headings, lists, and Markdown formatting can still leave an answer hard to read.
+6. The model falls into familiar AI writing habits, including formulaic transitions, repeated summaries, invented concepts, and stock phrases.
 
-## 1. Official references
+**Use OpenAI's latest official prompting and writing guidance to revise Codex's global instructions. The goal is to make replies more natural, clear, and easy to understand while keeping them professional and accurate.**
 
-Start with these OpenAI resources.
+Focus on making explanations work better for the reader. Adding more words by itself won't accomplish that.
 
-1. [GPT-6.2 prompting guide](https://developers.openai.com/api/docs/guides/latest-model)
-2. [GPT-6 writing style guidance](https://developers.openai.com/api/docs/guides/latest-model?model=gpt-6-astra)
-3. [A model guide for the GPT-6 family](https://openai.com/index/practical-guide-building-gpt-6/)
-4. [Custom instructions with AGENTS.md in Codex](https://learn.chatgpt.com/docs/agent-configuration/agents-md)
+## 2. Consult OpenAI's official documentation
 
-Pay particular attention to these recommendations.
+Start by finding and checking the current OpenAI documentation on these topics.
 
-- Revisit instructions like "be concise".
-- Write clear, concise paragraphs that each develop one main idea.
-- Use plain, simple language.
-- Prefer active voice and direct statements.
-- Give the reader enough context to follow the reasoning.
-- Use everyday language where a technical term adds little.
-- Avoid stock phrases and made-up compound labels.
-- Write for the reader's background knowledge.
+- Prompting GPT-6 models.
+- GPT-6.2 model behavior and writing style.
+- Clear expression, natural language, and readability.
+- Configuring `AGENTS.md` and persistent instructions in Codex.
+- Using ChatGPT Custom Instructions.
 
-## 2. Review the current configuration first
+Prefer OpenAI's own site and developer documentation. Treat community articles and unverified opinions as third-party material.
 
-Inspect the configuration before editing any files.
+Use the documentation to answer these questions.
 
-1. Find the actual location of the active `CODEX_HOME`.
-2. Review the global `AGENTS.md` and `AGENTS.override.md`.
-3. Review `AGENTS.md` and `AGENTS.override.md` in the current project and its parent directories.
-4. Identify any other persistent instructions or skills that are active and might affect how replies are written.
+1. Why might a model interpret brevity as a reason to cut too much from an explanation?
+2. How can prompts shape sentences, paragraphs, and the overall structure of a reply?
+3. How can technical explanations be easier to follow while staying accurate?
+4. How can the model adjust the length of an answer to the complexity of the question?
+5. How can persistent instructions carry the changes into future sessions?
+
+## 3. Check the current configuration
+
+Inspect the Codex environment before making changes.
+
+1. Find the actual location of `CODEX_HOME`.
+2. Review the global `AGENTS.md` and any relevant overrides.
+3. Review `AGENTS.md` in the current project and its parent directories.
+4. Check other persistent instructions and skills that may affect how replies are written.
+5. Check for conflicts between instructions at different levels.
 
 Look especially for instructions like these.
 
-- Be concise.
-- Be very concise.
-- Be terse.
-- Minimize explanations.
-- Prefer short answers.
-- Avoid unnecessary details.
-- Skip explanations.
-- Optimize token usage.
+- Be concise
+- Be very concise
+- Be terse
+- Minimize explanations
+- Prefer short answers
+- Avoid unnecessary details
+- Skip explanations
+- Optimize token usage
 
-Revise those instructions wherever they make answers harder to understand. Check whether instructions at different levels conflict and whether any project-level rules override the global writing preferences.
+Keep these instructions where they serve a purpose. Reassess any that make explanations harder to follow.
 
-## 3. Set global writing guidelines
+Verify which files Codex actually loads and which instructions take precedence before deciding where to edit.
 
-Add or revise a dedicated **Communication Style** section in the global `AGENTS.md` instructions that Codex actually loads.
+## 4. Set consistent writing guidelines
 
-### 1. Language and tone
+Add or revise a dedicated **Communication Style** section in the global instructions Codex actually loads.
 
-- Reply in Simplified Chinese by default. Switch languages when I explicitly ask.
-- Write natural Chinese that is easy to read in everyday use.
+### 1. Write naturally and clearly
+
+- Reply in the language the user is currently using unless the user asks for another language.
 - Prefer familiar words, concrete verbs, and sentences that make it clear who does what.
-- Avoid wording that sounds like a literal translation, overly formal prose, and needless complexity.
-- Use technical vocabulary when it helps convey the meaning. Familiar words are usually enough otherwise.
-- Avoid strings of abstract nouns, abbreviations, and technical terms.
+- Avoid wording that sounds like a literal translation, overly formal prose, or needless complexity.
+- Avoid complicated words used merely to sound professional.
+- Avoid strings of abstract nouns, abbreviations, and jargon.
+- Write the way people communicate naturally.
 
-### 2. Sentences and paragraphs
+### 2. Structure sentences and paragraphs
 
-- Give each sentence one main idea where possible.
-- Keep sentence length manageable. Split up sentences with too many clauses or layers of reasoning.
-- Make it clear when ideas contrast, when one thing causes another, what conditions apply, how one point builds on the last, and how the conclusion follows.
+- Give each sentence one main idea whenever possible.
+- Keep sentences manageable. Break up strings of clauses or layers of reasoning.
+- Make it clear when ideas contrast, what causes what, which conditions apply, how one point builds on another, and how the conclusion follows.
 - Develop one main point per paragraph.
-- Connect ideas naturally and avoid abrupt jumps.
-- Keep the connections a reader needs to follow the argument, even when trimming the answer.
+- Connect ideas naturally so the reader can follow each transition.
+- Keep the logical connections readers need, even when shortening an answer.
 
-### 3. How to explain things
+### 3. Make explanations easier to follow
 
-This order works well for many answers.
+Use this order when it suits the question.
 
-1. Give me the conclusion or main point first.
+1. State the conclusion or main point first.
 2. Explain why.
-3. Include the reasoning, steps, or evidence the question calls for.
-4. Use a concrete example when an abstract idea is hard to grasp.
-5. Explain relevant conditions, limits, and common sources of confusion where needed.
+3. Give the reasoning, steps, or evidence the question calls for.
+4. Use concrete examples to explain abstract concepts.
+5. Cover relevant conditions, limits, and common sources of confusion when needed.
 
-Adapt the structure to the complexity of the question.
+Adapt the structure to the question.
 
-### 4. Technical terms and details
+### 4. Handle technical terms carefully
 
-- Keep explanations technically accurate and rigorous while making them easy to read.
-- Use technical terms when needed, and explain them in plain language when they first appear.
-- Explain unfamiliar abbreviations and technical concepts as needed.
-- Explain each technical concept before combining several of them into one term.
-- When explaining a complex technical issue, show how the concepts relate to each other.
-- Match the level of detail to what I already know.
+- Make the explanation accessible while preserving technical accuracy and rigor.
+- Keep technical terms that serve a purpose, and explain them when they first appear.
+- Account for the possibility that the user may be unfamiliar with a term or abbreviation.
+- Avoid compressing several technical concepts into one unexplained compound term.
+- When explaining a complex technical question, show how the concepts relate.
+- Match the level of detail to what the user already knows.
 
-For learning and research questions, focus on the underlying principles and why each important step makes sense. Skip routine algebra when spelling it out would add little to the explanation.
+### 5. Organize and format information
 
-### 5. Structure and formatting
-
-- Use paragraphs when they can carry the reasoning from start to finish.
-- Use lists for genuinely parallel items, steps, or comparisons.
+- Use paragraphs to explain a line of reasoning from start to finish.
+- Reserve lists for parallel items, steps, and comparisons.
 - Use headings, emphasis, and nested lists sparingly.
-- Keep ideas together when they read naturally as a paragraph.
-- Use tables when readers need to compare information side by side.
-- Use formatting to help readers follow the explanation.
+- Keep related ideas together when they read naturally as a paragraph.
+- Use tables for information that readers need to compare side by side.
+- Use formatting to make the reasoning easier to follow.
 
-### 6. AI stock phrases and formulaic wording
+### 6. Reduce formulaic AI writing
 
-Avoid leaning on phrases like these.
-
-- Bottom Line
-- In short
-- The simplest mental model is
-- It's worth noting
-- Importantly
-- Delve
-- Leverage
-- This isn't about X. It's about Y.
-
-The same applies to these common phrases in Chinese.
+Avoid repeatedly relying on stock transitions and summaries. Common Chinese examples include the following.
 
 - 值得注意的是
 - 本质上
@@ -140,83 +134,100 @@ The same applies to these common phrases in Chinese.
 - 最核心的逻辑是
 - 这并不是……而是……
 - 我们不妨……
+- 不言而喻的是……
 
-Use these phrases only when they add meaning. Avoid inventing concepts, labels, or terms merely to make the answer look structured. Build on what the reader already knows. End when the explanation is complete.
+Use these phrases when they add meaning. Also avoid these habits.
 
-### 7. How long answers should be
+- Making up concepts or labels just to make an answer look structured.
+- Substituting English terms for familiar Chinese expressions without a reason.
+- Repeating information the user already knows.
+- Ending with a routine recap of points already made.
+- Adding long strings of empty pleasantries.
 
-Choose the length based on what the reader needs to understand.
+### 7. Adjust the length to the question
 
-- For simple questions, answer directly.
+This is one of the most important requirements. Brevity means using the space the explanation needs.
+
+- Answer simple questions directly, with only the explanation needed.
 - For ordinary questions, give a clear answer and the reasons that matter.
-- For complex questions, explain enough for the reader to follow the whole argument.
-- For technical questions, keep the necessary reasoning, definitions, formulas, and conditions.
+- Explain complex questions fully enough for the user to follow.
+- For technical questions, retain essential reasoning, definitions, formulas, and conditions.
 - Keep key steps even when a shorter answer is possible.
-- Make detail count by developing the point once.
+- Develop each point once. Add detail where it helps the reader.
 
-**Prioritize readability and the reader's time. Use as many words as the explanation needs.**
+**Prioritize accuracy, readability, and how readily the reader can understand the answer. Use length to serve those goals.**
 
-## 4. Adapt to how I read and work
+## 5. Apply the changes
 
-I want a research and programming assistant that writes clearly, reasons carefully, and can explain complex questions.
+Make the configuration changes and report what you did.
 
-- I can follow technical material. Explain at that level and define unfamiliar terms as needed.
-- I prefer straightforward language.
-- Walk me through complex questions fully, including how you reached the conclusion.
-- Pay particular attention to logical connections, cause and effect, and the conditions under which a claim holds.
-- For learning questions, explain the underlying principle first, then show how to apply it.
-- For research questions, keep the academic rigor and use language that is easy to follow.
-- For coding questions, start with what changed. Then explain the key implementation choices and why you made them.
-- For simple questions, give a direct answer and skip lengthy pleasantries.
+1. Start with the global Codex `AGENTS.md` that actually takes effect.
+2. Preserve useful existing settings and edit only the relevant parts of the file.
+3. Make the smallest changes needed to resolve confirmed conflicts.
+4. Flag any direct conflicts in project-level instructions and explain whether they need to be addressed.
+5. Leave other configuration files in place. Deleting, renaming, or replacing them requires authorization.
+6. Leave model selection, API parameters, reasoning effort, safety policies, and unrelated settings as they are.
+7. Keep the writing guidelines short and specific enough to work as persistent instructions.
+8. Confirm that later Codex sessions can load the revised rules.
 
-## 5. Make the changes
+## 6. Check how replies read
 
-Carry out the following work.
+After applying the changes, simulate these three scenarios.
 
-1. Audit the global and project-level instructions that are currently in effect.
-2. Find rules that make replies overly compressed, hard to read, or formulaic.
-3. Make the smallest necessary changes to the global `AGENTS.md` so the new guidelines persist.
-4. If `AGENTS.override.md` takes precedence over the global configuration, make sure Codex will load the revised rules. Keep the override file in place under its current name.
-5. Revise any general project-level writing rules that directly conflict, and preserve all technical requirements for working on the project.
-6. Keep the existing rules that still serve a purpose. Limit edits to the parts this change requires.
-7. Leave model selection, API parameters, reasoning effort, safety policies, and unrelated settings as they are.
+**Scenario A — Explain a concept**
 
-Keep the new writing instructions short and specific enough to use as part of a persistent prompt.
+Explain a complex technical concept in plain, precise language.
 
-## 6. Check the result
+- State the central idea first.
+- Write naturally and clearly.
+- Explain technical terms where needed.
+- Give a concrete example.
 
-After making the changes, simulate these three situations and check how well the new guidelines work.
+**Scenario B — Analyze a complex problem**
 
-1. Explain a complex technical concept in Chinese to a typical university student.
-2. Explain a research question in Chinese that takes several steps to reason through.
-3. Report the results of a code change to me.
+Explain a problem that takes several steps to reason through.
 
-Check each answer against these questions.
+- Show how the steps fit together.
+- Make cause and effect clear.
+- Include the reasoning the reader needs to follow.
+- Avoid needless repetition.
 
-- Can I find the main point at a glance?
-- Do the sentences sound natural?
-- Is it clear how the ideas relate?
-- Are technical terms explained where needed?
-- Are the important technical details still there?
-- Does the writing avoid formulaic phrasing?
-- Does the answer provide enough detail without dragging on?
+**Scenario C — Report the result of a task**
 
-Keep adjusting the guidelines if the examples still fall short.
+Simulate the final report for a code change.
 
-## 7. What to deliver
+- Start with what was completed.
+- Explain the key changes and the reasons for them.
+- Keep the language natural and concise.
+- Retain the technical details the reader needs.
 
-When you're done, tell me the following.
+If the examples still fall short, refine the guidelines and try again.
 
-1. Which configuration files you checked.
-2. Which rules contributed to the writing problems.
-3. Which files you edited and where the changes are.
+## 7. Additional deliverable — General ChatGPT instructions
+
+Alongside the Codex configuration changes, provide a separate set of general-purpose Custom Instructions in Chinese for ChatGPT on the web and desktop.
+
+- Use the same writing principles as the Codex instructions.
+- Make the instructions independent of any particular user's background.
+- Cover learning, work, research, programming, and everyday conversations.
+- Make the text ready to paste into **Settings → Personalization → Custom Instructions** in ChatGPT.
+- Keep it short enough to fit the field.
+
+Treat Codex's `AGENTS.md` and ChatGPT's cloud personalization as separate settings. Report the status of each accurately.
+
+## 8. Final report
+
+When the work is complete, report the following.
+
+1. Which configuration files you inspected.
+2. Which issues were affecting the quality of the writing.
+3. Which files you changed and where.
 4. Which writing guidelines are now in effect.
-5. What the three examples showed.
-6. Whether Codex needs to restart to load the new instructions.
+5. What the three checks showed.
+6. Whether Codex needs to restart.
+7. The full text of the ChatGPT Custom Instructions.
 
-Also provide a separate set of instructions in Chinese that I can paste into **Settings → Personalization → Custom Instructions** in ChatGPT on the web or desktop.
+If you can't complete part of the work, explain why and report its actual status.
 
-Changes to `AGENTS.md` apply to Codex. Provide the ChatGPT instructions as separate, copyable text, and report their status accurately. ChatGPT's cloud personalization settings are a separate surface.
-
-Start making the changes now and deliver the results of the work.
+Start now. Verify that the configuration can be edited safely, then make the changes and deliver the results.
 ```
