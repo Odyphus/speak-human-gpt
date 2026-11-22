@@ -1,4 +1,4 @@
-# gpt,speak human!
+# speak human，gpt
 
 **让 GPT 说人话，把复杂问题讲清楚。**
 
